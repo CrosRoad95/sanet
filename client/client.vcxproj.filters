@@ -4,6 +4,12 @@
     <Filter Include="entities">
       <UniqueIdentifier>{5286b7f4-8dd1-4ef5-9f9b-2d8415d26863}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
+=======
+    <Filter Include="gamelogic">
+      <UniqueIdentifier>{9d983e96-08b3-4e59-b22b-4d6b507d753e}</UniqueIdentifier>
+    </Filter>
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
     <Filter Include="networking">
       <UniqueIdentifier>{ef9b9c3c-d3f2-40ca-86d8-ea90b65a6852}</UniqueIdentifier>
     </Filter>
@@ -19,6 +25,12 @@
     <Filter Include="rendering">
       <UniqueIdentifier>{5b4ad2d8-7a56-4c9f-9657-afac6812b11d}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
+=======
+    <Filter Include="rendering\debug">
+      <UniqueIdentifier>{ab94dde4-c912-4b81-ae88-367aa123c8e8}</UniqueIdentifier>
+    </Filter>
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
     <Filter Include="rendering\imgui">
       <UniqueIdentifier>{020aa454-7f0c-4152-ac19-f5871150f2d8}</UniqueIdentifier>
     </Filter>
@@ -48,6 +60,12 @@
     <ClCompile Include="entities\CVehicleManager.cpp">
       <Filter>entities</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="gamelogic\CPopulationManager.cpp">
+      <Filter>gamelogic</Filter>
+    </ClCompile>
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
     <ClCompile Include="networking\CNetworkManager.cpp">
       <Filter>networking</Filter>
     </ClCompile>
@@ -69,6 +87,12 @@
     <ClCompile Include="rendering\CRenderManager.cpp">
       <Filter>rendering</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="rendering\debug\CDebugScreen.cpp">
+      <Filter>rendering\debug</Filter>
+    </ClCompile>
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
     <ClCompile Include="rendering\imgui\CImGui.cpp">
       <Filter>rendering\imgui</Filter>
     </ClCompile>
@@ -117,6 +141,12 @@
     <ClInclude Include="entities\sub\CWeaponManager.h">
       <Filter>entities\sub</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="gamelogic\CPopulationManager.h">
+      <Filter>gamelogic</Filter>
+    </ClInclude>
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
     <ClInclude Include="models\CModelManager.h">
       <Filter>models</Filter>
     </ClInclude>
@@ -141,6 +171,12 @@
     <ClInclude Include="rendering\CRenderManager.h">
       <Filter>rendering</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="rendering\debug\CDebugScreen.h">
+      <Filter>rendering\debug</Filter>
+    </ClInclude>
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
     <ClInclude Include="rendering\imgui\CImGui.h">
       <Filter>rendering\imgui</Filter>
     </ClInclude>

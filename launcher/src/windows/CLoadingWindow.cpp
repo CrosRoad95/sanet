@@ -6,6 +6,7 @@ LRESULT CALLBACK CLoadingWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam,
 
 	switch (message)
 	{
+<<<<<<< HEAD
 		case WM_PAINT:
 		{
 			PAINTSTRUCT ps;
@@ -27,6 +28,29 @@ LRESULT CALLBACK CLoadingWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam,
 
 			return 0;
 		}
+=======
+	case WM_PAINT:
+	{
+		PAINTSTRUCT ps;
+		HDC hdc = BeginPaint(hWnd, &ps);
+		Gdiplus::Graphics graphics(hdc);
+
+		graphics.DrawImage(window.splash, 0, 0);
+
+		Gdiplus::StringFormat format;
+		format.SetAlignment(Gdiplus::StringAlignmentCenter);
+		format.SetLineAlignment(Gdiplus::StringAlignmentFar);
+
+		graphics.DrawString(window.upperText.c_str(), -1, window.font, Gdiplus::RectF(67, 347, 168, 25), &format, window.textBrush);
+
+		graphics.FillRectangle(window.backBrush, 78, 293, 144, 4);
+		graphics.FillRectangle(window.frontBrush, 78, 293, (int)round(144 * window.loadProgress), 4);
+
+		EndPaint(hWnd, &ps);
+
+		return 0;
+	}
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	}
 	return DefWindowProc(hWnd, message, wParam, lParam);
 }

@@ -103,13 +103,21 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	std::wstring altPath = std::wstring(_altPath);
 	//alt::Log::Instance().AddOut(new alt::Log::FileStream(altPath + L"\\logs\\launcher.log"));
 
+<<<<<<< HEAD
 	for (std::wstring& file : requiredFiles)
+=======
+	/*for (std::wstring& file : requiredFiles)
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	{
 		if (!File::Exists(file))
 		{
 			if (!missing)
 			{
+<<<<<<< HEAD
 				ss << L"The following required files are missing:" << std::endl;
+=======
+				ss << L"The following files are missing:" << std::endl;
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 				missing = true;
 			}
 
@@ -121,7 +129,11 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	{
 		MessageBox(NULL, ss.str().c_str(), L"Installation corrupted", MB_OK | MB_ICONERROR);
 		return 1;
+<<<<<<< HEAD
 	}
+=======
+	}*/
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 	Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 	ULONG_PTR gdiplusToken;
@@ -132,6 +144,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	auto& config = CConfig::Instance();
 	auto& injector = CInjector::Instance();
 
+<<<<<<< HEAD
 	for (std::wstring& file : requiredFiles)
 	{
 		if (File::Exists(file))
@@ -155,6 +168,20 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			DispatchMessage(&msg);
 		}
 	}).detach();
+=======
+/*
+#ifdef _DEBUG
+	injector.PushLibrary(L"windowed.dll");
+#endif
+*/
+
+	injector.PushLibrary(L"vorbisFile.dll");
+    injector.PushLibrary(L"minidump.dll");
+    injector.PushLibrary(L"client.dll");
+    injector.PushLibrary(L"openLA.dll");
+
+	window.Init(hInstance);
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 	// Load config
 	if (!config.Load(L"config.json"))
@@ -162,14 +189,20 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		TCHAR path[MAX_PATH];
 
 		BROWSEINFO bi = { 0 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 		bi.lpszTitle = L"Select your installation of Grand Theft Auto San Andreas...";
 		bi.ulFlags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
 		bi.lpfn = BrowseCallbackProc;
 		bi.lParam = (LPARAM)L"";
 
+<<<<<<< HEAD
 		window.SetProgress(0.5f, L"Waiting for selected installation of game..");
 
+=======
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 		LPITEMIDLIST pidl = SHBrowseForFolder(&bi);
 
 		if (pidl != 0)
@@ -188,6 +221,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		}
 	}
 
+<<<<<<< HEAD
 	gtapath = config.GetPath();
 
 	window.SetProgress(1.0f, L"Launching game..");
@@ -195,6 +229,27 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	window.Destroy();
 	Gdiplus::GdiplusShutdown(gdiplusToken);
 
+=======
+
+	gtapath = config.GetPath();
+
+	// Open loading window
+	ShowWindow(window.GetHwnd(), nCmdShow);
+	UpdateWindow(window.GetHwnd());
+
+	std::thread([&] {
+		MSG msg;
+
+		while (GetMessage(&msg, NULL, 0, 0) > 0)
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+	}).detach();
+
+	window.Destroy();
+	Gdiplus::GdiplusShutdown(gdiplusToken);
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	// Run and inject
 	if (!injector.Run(config.GetPath(), altPath))
 		MessageBox(NULL, L"Failed to load alt:SA Client\nSee client.log", L"alt:SA Load Error", MB_OK | MB_ICONERROR);

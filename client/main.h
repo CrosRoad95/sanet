@@ -90,7 +90,11 @@ using namespace plugin;
 #include "examples\imgui_impl_dx9.h"
 #include "examples\imgui_impl_win32.h"
 
+<<<<<<< HEAD
 //multiplayer code
+=======
+//sandbox
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 #include "config.h"
 #include "options/COptions.h"
 #include "rendering/imgui/CImGui.h"
@@ -100,6 +104,11 @@ using namespace plugin;
 #include "entities/CVehicleManager.h"
 #include "entities/CPedManager.h"
 #include "entities/CPlayerPedManager.h"
+<<<<<<< HEAD
+=======
+#include "gamelogic/CPopulationManager.h"
+#include "rendering/debug/CDebugScreen.h"
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 #include "rendering/ingame/CNameTags.h"
 
 #include "tasks/CTaskSerializer.h"

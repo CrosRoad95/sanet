@@ -86,6 +86,13 @@ LRESULT CALLBACK wnd_proc(HWND wnd, UINT umsg, WPARAM wparam, LPARAM lparam)
             CRenderManager::m_pImGui->bFocus = !CRenderManager::m_pImGui->bFocus;
             CRenderManager::m_pImGui->bConnectScreen = !CRenderManager::m_pImGui->bConnectScreen;
 		}
+<<<<<<< HEAD
+=======
+		if (vkey == VK_F10)
+		{
+			CNetworkManager::AttemptConnect("127.0.0.1", 7766, "Player");
+		}
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 		if (vkey == 'G')
 		{
 			CPlayerPedManager::ProcessEnterCarAsPassenger();
@@ -187,6 +194,10 @@ void CRenderManager::Init()
     patch::ReplaceFunctionCall(0x7487A8, InitInstance_Hook);
 	patch::ReplaceFunctionCall(0x541DD7, Hooked_CPad__UpdateMouse, true);
 
+<<<<<<< HEAD
+=======
+	m_pGuiContainer.push_back(new CDebugScreen());
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	m_pGuiContainer.push_back(new CNameTags());
 	CRenderManager::m_pImGui = new CImGui();
 
@@ -271,7 +282,11 @@ void CRenderManager::Draw()
 		{
 		    it->Draw();
 		}
+<<<<<<< HEAD
 		RenderText("Multiplayer / in-dev", { 10, 10 }, 0xFFFFFFFF);
+=======
+		RenderText("SAndbox", { 10, 10 }, 0xFFFFFFFF);
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	}
 	
     if (CRenderManager::m_pImGui && CRenderManager::m_pImGui->bInitialized)

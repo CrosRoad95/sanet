@@ -1,5 +1,15 @@
 #include "stdafx.h"
+<<<<<<< HEAD
 
+=======
+/*
+#pragma bss_seg(".cdummy")
+char dummy_seg[0x2500000];
+
+#pragma data_seg(".zdata")
+char zdata[0x50000] = { 1 };
+*/
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 ExecutableLoader::ExecutableLoader(const BYTE* origBinary)
 {
 	m_origBinary = origBinary;
@@ -43,6 +53,10 @@ bool ExecutableLoader::LoadDependentLibraries(IMAGE_NT_HEADERS* ntHeader)
 			std::string str = "Could not load dependent module " + std::string(name) + ". Error code: " + os.str();
 
 			MessageBox(NULL, s2ws(str).c_str(), L"Launch error", MB_OK);
+<<<<<<< HEAD
+=======
+			//FatalError(va("Could not load dependent module %s. Error code was %i.", name, GetLastError()));
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 			return false;
 		}
 
@@ -83,6 +97,10 @@ bool ExecutableLoader::LoadDependentLibraries(IMAGE_NT_HEADERS* ntHeader)
 				GetModuleFileNameA(module, pathName, sizeof(pathName));
 
 				MessageBox(NULL, L"Could not load function in dependent module", L"Launch error", MB_OK);
+<<<<<<< HEAD
+=======
+				//FatalError(va("Could not load function %s in dependent module %s (%s).", functionName, name, pathName));
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 				return false;
 			}
 
@@ -106,6 +124,10 @@ void ExecutableLoader::LoadSection(IMAGE_SECTION_HEADER* section)
 	if ((uintptr_t)targetAddress >= m_loadLimit)
 	{
 		MessageBox(NULL, L"Exceeded load limit.", L"Launch error", MB_OK);
+<<<<<<< HEAD
+=======
+		//FatalError("Exceeded load limit.");
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 		return;
 	}
 

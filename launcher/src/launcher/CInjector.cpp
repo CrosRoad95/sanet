@@ -86,10 +86,15 @@ bool CInjector::Run(const std::wstring & gameFolder, const std::wstring &altPath
         printf("Loading lib: %s\n", libName);
         std::string strLibName(libName);
         std::transform(strLibName.begin(), strLibName.end(), strLibName.begin(), ::tolower);
+<<<<<<< HEAD
 
         if (strLibName == "vorbisfile.dll")
             return LoadLibraryW(L"vorbisfile.dll");
 
+=======
+        if (strLibName == "vorbisfile.dll")
+            return LoadLibraryW(L"libs\\vorbisFile.dll");
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
         HMODULE module = LoadLibraryA(libName);
         if (!module) {
             std::stringstream ss;
@@ -97,7 +102,10 @@ bool CInjector::Run(const std::wstring & gameFolder, const std::wstring &altPath
             MessageBoxA(NULL, ss.str().c_str(), "Panic!", 0);
             TerminateProcess(GetCurrentProcess(), 0);
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
         return module;
     });
 
@@ -135,6 +143,15 @@ bool CInjector::Run(const std::wstring & gameFolder, const std::wstring &altPath
 	// Call the entry point
 	AddVectoredExceptionHandler(0, HandleVariant);
 	InvokeEntryPoint(entryPoint);
+<<<<<<< HEAD
+=======
+	/*
+	if (!CreateProcess((folder + L"\\gta_sa.exe").c_str(), const_cast<LPWSTR>(path.c_str()), NULL, NULL, true, CREATE_SUSPENDED | PROCESS_QUERY_INFORMATION, NULL, folder.c_str(), &siStartupInfo, &piProcessInfo))
+	{
+		MessageBox(NULL, (folder + L"Could not launch GTA San Andreas").c_str(), L"Launch error", MB_OK);
+		return false;
+	}*/
+>>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	return true;
 }
 
