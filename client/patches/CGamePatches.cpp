@@ -40,12 +40,7 @@ void CGamePatches::Init()
     RenderManagerPatch();  
 	FindPlayerVehiclePatch();
 	GetPadPatch();
-<<<<<<< HEAD
     ExecuteEXEPatches();
-=======
-    ExecuteEXEPatches();  // Should be always called LAST !
-	//this->LimitPatches(); using OpenLA
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 }
 
 // Thank you Botder
@@ -65,19 +60,11 @@ bool Hooked_PSelectDevice()
 	RwInt32 const subSystem = RwEngineGetCurrentSubSystem();
 	RwInt32 const videoMode = RwEngineGetCurrentVideoMode();
 
-<<<<<<< HEAD
 	if (!RwEngineSetSubSystem(subSystem))
 		return FALSE;
 
 	if (!RwEngineSetVideoMode(videoMode))
 		return FALSE;
-=======
-	/*if (!RwEngineSetSubSystem(subSystem))
-	return FALSE;
-
-	if (!RwEngineSetVideoMode(videoMode))
-	return FALSE;*/
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 	RwVideoMode vm = { 0 };
 	RwEngineGetVideoModeInfo(&vm, videoMode);
@@ -193,37 +180,15 @@ void CGamePatches::LoadScreenPatches()
 	// Modify the loading bar
 	patch::ReplaceFunctionCall(0x590480, Hooked_DrawBarChart);
 
-<<<<<<< HEAD
 	//let us know when the game finishes loading/initialization
 	patch::ReplaceFunctionCall(0x53BCD9, Hooked_Init3);
 
-=======
-	//replace loading screen
-	patch::ReplaceFunctionCall(0x5902C6, Hooked_LoadSplashes);
-
-	//let us know when the game finishes loading/initialization
-	patch::ReplaceFunctionCall(0x53BCD9, Hooked_Init3);
-
-	//replace loadscreen
-	patch::ReplaceFunction(0x53DED0, Hooked_LoadingScreen);
-
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	//replace rwerror
 	patch::ReplaceFunction(0x8088D0, Hooked_rwerror);
 
 	//hook internal LoadLibraryA wrapper
 	patch::ReplaceFunction(0x81E412, Hooked_LoadLibraryA);
 
-<<<<<<< HEAD
-=======
-	//replace splash rendering
-	//patch::ReplaceFunctionCall(0x590597, Hooked_RenderSplash);
-
-	// Disable CLoadingScreen::LoadSplashes
-	//patch::PutRetn(0x5900B0);
-    
-
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	// Start the game at state 5
 	// Disable gGameState = 0 setting
 	patch::Nop(0x747483, 6);
@@ -238,19 +203,8 @@ void CGamePatches::LoadScreenPatches()
 	patch::ReplaceFunctionCall(0x748C9A, SimulateCopyrightScreen);
 
 	// Disable loading screen rendering
-<<<<<<< HEAD
 	patch::Nop(0x590D9F, 5);
 	patch::Set<UINT8>(0x590D9F, 0xC3);
-=======
-	//patch::Nop(0x590D9F, 5);
-	//patch::Set<UINT8>(0x590D9F, 0xC3);
-	
-	// Skip fading screen rendering
-	//patch::RedirectJump(0x590AE4, (void*)0x590C9E);
-	
-	// Disable loading bar rendering
-	//patch::Nop(0x5905B4, 5);
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 	// Disable audio tune from loading screen
 	patch::Nop(0x748CF6, 5);
@@ -273,12 +227,6 @@ void ProcessFrontEndMenu()
 
 void CGamePatches::MenuPatches()
 {
-<<<<<<< HEAD
-=======
-	// Disable CMenuManager::Process
-	//patch::PutRetn(0x57B440);
-    
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	// Disable menu by skipping CMenuManager::DrawStandardMenus call in CMenuManager::DrawBackground
 	patch::Nop(0x57BA57, 6);
 
@@ -295,13 +243,6 @@ void CGamePatches::MenuPatches()
 	patch::RedirectShortJump(0x576B8D);
     patch::RedirectShortJump(0x576BAF);
 
-<<<<<<< HEAD
-=======
-	// No frontend texture loading (Disable CMenuManager::LoadAllTextures)
-	//patch::PutRetn(0x572EC0);
-    
-
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	// Allow widescreen resolutions
 	patch::SetUInt(0x745B81, 0x9090587D);
 	patch::SetUInt(0x74596C, 0x9090127D);
@@ -326,13 +267,6 @@ void CGamePatches::MenuPatches()
 
 	// Disable menu after focus loss
     patch::PutRetn(0x53BC60);
-<<<<<<< HEAD
-=======
-    
-	// Disable GTA Setting g_bIsForegroundApp to false on focus lost
-	/*patch::Nop(0x747FFE, 6);
-	patch::Nop(0x748054, 10);*/
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 }
 
 
@@ -352,17 +286,10 @@ void Hook_CRunningScript__Process()
 
 		// Set player position
 		FindPlayerPed(0)->SetPosn(2488.562f, -1666.865f, 12.8757f);
-<<<<<<< HEAD
 		FindPlayerPed(0)->GetPlayerInfoForThisPlayerPed()->m_bDoesNotGetTired = true;
 	
 		//Setup weapon skills
 		/*
-=======
-
-		FindPlayerPed(0)->GetPlayerInfoForThisPlayerPed()->m_bDoesNotGetTired = true;
-	
-		//Setup weapon skills
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 		for (int i = 69; i < 80; i++)
 		{
 			CStats::SetStatValue(i, 1000.0);
@@ -371,20 +298,13 @@ void Hook_CRunningScript__Process()
 		CWeaponManager::GiveWeapon(FindPlayerPed(0), eWeaponType::WEAPON_M4, 1000, false);
 		CWeaponManager::GiveWeapon(FindPlayerPed(0), eWeaponType::WEAPON_SAWNOFF, 1000, false);
 		CWeaponManager::GiveWeapon(FindPlayerPed(0), eWeaponType::WEAPON_DESERT_EAGLE, 1000, false);
-<<<<<<< HEAD
 		*/
-=======
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 		// CStreaming::LoadScene
 		CVector spawn = { 2488.562f, -1666.865f, 12.8757f };
 		CStreaming::LoadScene(&spawn);
 
-<<<<<<< HEAD
 		//CVehicleManager::Create(411, { 2488.562f, -1660.865f, 12.8757f });
-=======
-		CVehicleManager::Create(411, { 2488.562f, -1660.865f, 12.8757f });
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 		// First tick processed
 		scriptProcessed = true;
@@ -404,7 +324,6 @@ void Hook_CPopulation__Update()
 	CPopulation::ManagePopulation();
 	switch (CWeather::WeatherRegion)
 	{
-<<<<<<< HEAD
 		case 0:
 		case 1:
 		case 4:
@@ -416,19 +335,6 @@ void Hook_CPopulation__Update()
 		case 3:
 			CPopulation::CurrentWorldZone = 2;
 			break;
-=======
-	case 0:
-	case 1:
-	case 4:
-		CPopulation::CurrentWorldZone = 0;
-		break;
-	case 2:
-		CPopulation::CurrentWorldZone = 1;
-		break;
-	case 3:
-		CPopulation::CurrentWorldZone = 2;
-		break;
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	}
 }
 
@@ -443,17 +349,6 @@ bool __fastcall Hook_FallUnderMap(CPed* ped)
 
 void CGamePatches::RunningScriptHook()
 {
-<<<<<<< HEAD
-=======
-	// Disable CTheScripts::Init
-	//patch::PutRetn(0x468D50);
-
-	// Disable CTheScripts::Update
-	//patch::PutRetn(0x46A000);
-
-	// Disable CTheScripts::StartTestScript
-	//patch::PutRetn(0x464D40);
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 	// Disable CRunningScript::ProcessOneCommand
 	patch::PutRetn(0x469EB0);
@@ -466,14 +361,6 @@ void CGamePatches::RunningScriptHook()
 
 	// Hook script process (so we can spawn a local player)
 	patch::ReplaceFunctionCall(0x46A21B, Hook_CRunningScript__Process);
-<<<<<<< HEAD
-=======
-	//patch::ReplaceFunctionCall(0x46A000, Hook_CRunningScript__Process);
-
-	// Fixes collision problem caused by population patches
-	//patch::ReplaceFunctionCall(0x616650, Hook_CPopulation__Update);
-	//patch::PutRetn(0x616650+5);
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 	patch::ReplaceFunctionCall(0x565D1E, Hook_FallUnderMap);
 }
@@ -544,10 +431,6 @@ void CGamePatches::GameLogicPatches()
 	patch::PutRetn(0x522C80);
 
 	// No gta_sa.set writing
-<<<<<<< HEAD
-=======
-	//patch::PutRetn(0x57C8F0);
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	patch::PutRetn(0x57C660);
 
 	// Disable CGameLogic::Update
@@ -563,15 +446,9 @@ void CGamePatches::GameLogicPatches()
 	patch::PutRetn(0x5A07D0);
 
 	// Disable CCheat::DoCheats
-<<<<<<< HEAD
 	patch::PutRetn(0x439AF0);
 	// Disable CCheat::ToggleCheat
 	patch::PutRetn(0x438370);
-=======
-	//patch::PutRetn(0x439AF0);
-	// Disable CCheat::ToggleCheat
-	//patch::PutRetn(0x438370);
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 	// Disable the game's replay system (recording & playing - see CReplay stuff)
 	// F1 = Play the last 30 second of gameplay
@@ -590,34 +467,12 @@ void CGamePatches::GameLogicPatches()
 	// No "JCK_HLP" message
     patch::RedirectShortJump(0x63E8DF);
 
-<<<<<<< HEAD
 	// Disable CPlayerInfo::MakePlayerSafe
 	patch::PutRetn(0x56E870, 8);
 
 	// Disable CGangWars::Update
 	patch::PutRetn(0x446610);
 
-=======
-	// Disable CFont::Initialize
-	//patch::PutRetn(0x5BA690);
-	// Disable CFont::Shutdown
-	//patch::PutRetn(0x7189B0);
-
-	// Disable CPlayerInfo::MakePlayerSafe
-	patch::PutRetn(0x56E870, 8);
-
-	// Disable CInterestingEvents::ScanForNearbyEntities
-	//patch::PutRetn(0x605A30);
-
-	// Disable CGangWars::Update
-	patch::PutRetn(0x446610);
-
-	// Disable CConversations::Update
-	//patch::PutRetn(0x43C590);
-	// Disable CPedToPlayerConversations::Update
-	//patch::PutRetn(0x43B0F0);
-
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	// Disable ValidateVersion
 	// Contains a stupid check for 'grandtheftauto3' string in peds.col
 	patch::PutRetn(0x5BA060);
@@ -641,14 +496,6 @@ void CGamePatches::GameLogicPatches()
 	// Disable Interior_c::AddPickups
 	patch::PutRetn(0x591F90);
 
-<<<<<<< HEAD
-=======
-	// Make CEventDamage::IsSameEventForAI return false
-	//patch::SetUChar(0x4C01F0, 0xB0);
-	//patch::SetUChar(0x4C01F1, 0x00);
-	//patch::Nop(0x4C01F2, 3);
-
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	// Don't lock the cursor at 0,0
 	patch::PutRetn(0x7453F0);
 
@@ -688,17 +535,7 @@ void CGamePatches::GameLogicPatches()
 	patch::PutRetn(0x744AE0);
 
 	// SetWindowText
-<<<<<<< HEAD
 	patch::Set(0x619608, "Multiplayer");
-=======
-	patch::Set(0x619608, "alt:SA Multiplayer");
-
-	// Disable CIniFile::LoadIniFile (gta3.ini)
-	//patch::PutRetn(0x56D070);
-
-	// Disable CStreaming::ReadIniFile (stream.ini)
-	//patch::PutRetn(0x5BCCD0);
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 	// No random hydraulics for cars
     patch::RedirectShortJump(0x6B0BC2);
@@ -1059,10 +896,6 @@ void CGamePatches::InputPatches()
 
 void CGamePatches::PopulationPatches()
 {
-<<<<<<< HEAD
-=======
-    /*
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	// Disable CPopulation::Initialise x
 	patch::PutRetn(0x610E10);
 
@@ -1142,22 +975,6 @@ void CGamePatches::PopulationPatches()
 
 	// Disable CCarCtrl::GenerateOneRandomCar
 	patch::PutRetn(0x430050);
-<<<<<<< HEAD
-=======
-    */
-    patch::ReplaceFunctionCall(0x53C1C1, CCarCtrl__GenerateRandomCars_Hook);
-    patch::ReplaceFunctionCall(0x53C030, CPopulation__Update_Hook);
-    patch::ReplaceFunctionCall(0x53C054, CPopulation__Update_Hook);
-    patch::ReplaceFunctionCall(0x615D4B, CPopulation__AddToPopulation_Hook);
-    patch::ReplaceFunctionCall(0x61679B, CPopulation__AddToPopulation_Hook);
-
-    Patch_Funcs.push_back(
-        [](uint32_t Address) -> bool
-    {
-        return AdjustBranchPointer(Address, 0x612710, CPopulation__AddPed_Hook, false);
-    }
-    );
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 }
 
 void CGamePatches::LimitPatches()
@@ -1201,10 +1018,6 @@ void CGamePatches::PlayerInfoPatch()
     patch::SetUChar(0x84E1FA + 1, MAX_PLAYERS_NUM);
     patch::SetUChar(0x856465 + 1, MAX_PLAYERS_NUM);
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	CWorld::Players = CWorld__Players;
 
     Patch_Funcs.push_back( 
@@ -1252,24 +1065,6 @@ void CGamePatches::PlayerInfoPatch()
 
         return true;
     });
-<<<<<<< HEAD
-=======
-
-    Events::drawHudEvent.after += []() {
-        CPlayerPed* player = FindPlayerPed(0);
-        if (!player) return;
-
-        gamefont::Print({
-            Format("CurrentRot: %f",player->m_fCurrentRotation),
-            Format("Heading: %f",player->GetHeading()),
-            Format("AimingRot : %f",player->m_fAimingRotation),
-
-            }, 100.0f, 100.0f);
-    };
-
-    //printf("Patched %d %d CWorld::Players xrefs - %dms\n", found_pads_abs, found2_pads_offset, (GetTickCount() - starttime));
-	//printf("Patched %d %d CPad::Pads xrefs - %dms\n", found_CWP_abs, found2_CWP_offset, (GetTickCount() - starttime));
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 }
 
 void CGamePatches::PlayerPedPatch()

@@ -21,10 +21,6 @@
     <ClCompile Include="entities\CPedManager.cpp" />
     <ClCompile Include="entities\CPlayerPedManager.cpp" />
     <ClCompile Include="entities\CVehicleManager.cpp" />
-<<<<<<< HEAD
-=======
-    <ClCompile Include="gamelogic\CPopulationManager.cpp" />
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
     <ClCompile Include="main.cpp" />
     <ClCompile Include="networking\CNetworkManager.cpp" />
     <ClCompile Include="networking\entities\CClientPlayer.cpp" />
@@ -33,10 +29,6 @@
     <ClCompile Include="options\COptions.cpp" />
     <ClCompile Include="patches\CGamePatches.cpp" />
     <ClCompile Include="rendering\CRenderManager.cpp" />
-<<<<<<< HEAD
-=======
-    <ClCompile Include="rendering\debug\CDebugScreen.cpp" />
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
     <ClCompile Include="rendering\imgui\CImGui.cpp" />
     <ClCompile Include="rendering\ingame\CNameTags.cpp" />
     <ClCompile Include="tasks\CSerializedComplexCopInCar.cpp" />
@@ -47,10 +39,6 @@
     <ClInclude Include="entities\CPlayerPedManager.h" />
     <ClInclude Include="entities\CVehicleManager.h" />
     <ClInclude Include="entities\sub\CWeaponManager.h" />
-<<<<<<< HEAD
-=======
-    <ClInclude Include="gamelogic\CPopulationManager.h" />
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
     <ClInclude Include="main.h" />
     <ClInclude Include="models\CModelManager.h" />
     <ClInclude Include="networking\CNetworkManager.h" />
@@ -60,10 +48,6 @@
     <ClInclude Include="options\COptions.h" />
     <ClInclude Include="patches\CGamePatches.h" />
     <ClInclude Include="rendering\CRenderManager.h" />
-<<<<<<< HEAD
-=======
-    <ClInclude Include="rendering\debug\CDebugScreen.h" />
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
     <ClInclude Include="rendering\imgui\CImGui.h" />
     <ClInclude Include="rendering\ingame\CNameTags.h" />
     <ClInclude Include="rendering\ingame\tasks.h" />

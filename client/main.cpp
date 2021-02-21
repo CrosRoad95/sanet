@@ -19,10 +19,6 @@ public:
         CVehicleManager::Init();
         CPlayerPedManager::Init();
         CPedManager::Init();
-<<<<<<< HEAD
-=======
-        CPopulationManager::Init();
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
         CRenderManager::Init();
         CNetworkManager::Init();
         COptions::Init();

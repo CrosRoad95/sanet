@@ -3,26 +3,15 @@
 class CConfig : public CSingleton<CConfig>
 {
 	bool isDebug;
-<<<<<<< HEAD
 
 	std::string nickname;
 	std::string lang;
 	std::wstring gamePath;
-=======
-	std::string name;
-	std::string lang;
-	std::wstring gamePath;
-	std::string lastIp;
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 public:
 	CConfig() :
 		isDebug(false),
-<<<<<<< HEAD
 		nickname("Player"),
-=======
-		name("altSAPlayer"),
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 		lang("en")
 	{
 
@@ -47,18 +36,10 @@ public:
 
 		try
 		{
-<<<<<<< HEAD
 			nickname = config["nickname"].get<std::string>();
 			isDebug = config["debug"].get<bool>();
 			lang = config["language"].get<std::string>();
 			gamePath = converter.from_bytes(config["game_path"].get<std::string>());
-=======
-			name = config["name"].get<std::string>();
-			isDebug = config["debug"].get<bool>();
-			lang = config["lang"].get<std::string>();
-			gamePath = converter.from_bytes(config["gtapath"].get<std::string>());
-			lastIp = config["lastip"].get<std::string>();
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 		}
 		catch (json::parse_error)
 		{
@@ -75,18 +56,10 @@ public:
 
 		std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
-<<<<<<< HEAD
 		config["nickname"] = nickname;
 		config["debug"] = isDebug;
 		config["language"] = lang;
 		config["game_path"] = converter.to_bytes(gamePath);
-=======
-		config["name"] = name;
-		config["debug"] = isDebug;
-		config["lang"] = lang;
-		config["gtapath"] = converter.to_bytes(gamePath);
-		config["lastip"] = lastIp;
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 
 
 		std::ofstream ofile(filename);

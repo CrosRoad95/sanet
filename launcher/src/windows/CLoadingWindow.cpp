@@ -6,7 +6,6 @@ LRESULT CALLBACK CLoadingWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam,
 
 	switch (message)
 	{
-<<<<<<< HEAD
 		case WM_PAINT:
 		{
 			PAINTSTRUCT ps;
@@ -28,29 +27,6 @@ LRESULT CALLBACK CLoadingWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam,
 
 			return 0;
 		}
-=======
-	case WM_PAINT:
-	{
-		PAINTSTRUCT ps;
-		HDC hdc = BeginPaint(hWnd, &ps);
-		Gdiplus::Graphics graphics(hdc);
-
-		graphics.DrawImage(window.splash, 0, 0);
-
-		Gdiplus::StringFormat format;
-		format.SetAlignment(Gdiplus::StringAlignmentCenter);
-		format.SetLineAlignment(Gdiplus::StringAlignmentFar);
-
-		graphics.DrawString(window.upperText.c_str(), -1, window.font, Gdiplus::RectF(67, 347, 168, 25), &format, window.textBrush);
-
-		graphics.FillRectangle(window.backBrush, 78, 293, 144, 4);
-		graphics.FillRectangle(window.frontBrush, 78, 293, (int)round(144 * window.loadProgress), 4);
-
-		EndPaint(hWnd, &ps);
-
-		return 0;
-	}
->>>>>>> 31dbb5c74b29a47df4cf41280887a66794fdc5ff
 	}
 	return DefWindowProc(hWnd, message, wParam, lParam);
 }
@@ -71,7 +47,7 @@ void CLoadingWindow::Init(HINSTANCE hInstance)
 	hInstance = hInstance;
 
 	loadProgress = 0.0;
-	upperText = L"LOADING...";
+	upperText = L"Loading...";
 	lowerText = L"";
 
 	WNDCLASSEX wcex;
@@ -85,7 +61,7 @@ void CLoadingWindow::Init(HINSTANCE hInstance)
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
-	wcex.lpszClassName = L"_fivenet_launcher_class_";
+	wcex.lpszClassName = L"_launcher_class_";
 	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_ICON1));
 
 	RegisterClassEx(&wcex);
@@ -103,7 +79,7 @@ void CLoadingWindow::Init(HINSTANCE hInstance)
 	rect.left = (rect.right / 2) - (300 / 2);
 	rect.top = (rect.bottom / 2) - (400 / 2);
 
-	hWnd = CreateWindow(wcex.lpszClassName, L"alt:SA Launcher",
+	hWnd = CreateWindow(wcex.lpszClassName, L"Launcher",
 		WS_POPUP,
 		rect.left, rect.top, 300, 400, 0, 0, hInstance, 0);
 }
