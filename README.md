@@ -1,5 +1,10 @@
-# Project MP
+# San Andreas Net Multiplayer
+San Andreas Net Multiplayer source code.
 
-Project MP is an alternative mp mode for gta san andreas that use PSDK .
-
-All credits goes to Vektor , Crspy and Alt Team .
+Requirements to custom build/edit & launch code:
+```md
+- Installed Visual Studio Community 2017
+- Installed Direct3D v9 SDK
+- Installed Grand Theft Auto
+- PluginSDK
+```
