@@ -6,3 +6,5 @@ Requirements to custom build/edit & launch code:
 * Installed Direct3D v9 SDK
 * Installed Grand Theft Auto
 * PluginSDK
+
+Author: CrosRoad95
